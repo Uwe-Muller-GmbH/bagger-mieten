@@ -3,29 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Bagger mieten in Aachen, Heinsberg & Düren | Uwe Müller GmbH</title>
-  <meta name="description" content="Bagger mieten in Aachen, Heinsberg und Düren: faire Angebote, persönlicher Kontakt, Familienunternehmen, individuelle Beratung. Jetzt unverbindlich anfragen und schnell starten." />
+  <meta name="description" content="Bagger mieten in Aachen, Heinsberg und Düren: faire Angebote, persönlicher Kontakt, Familienunternehmen, individuelle Beratung. Jetzt anfragen und mit der passenden Maschine starten." />
   <link rel="canonical" href="https://<DEIN-GITHUB-NAME>.github.io/" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph / Twitter (für Shares) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Bagger mieten in Aachen, Heinsberg & Düren | Uwe Müller GmbH" />
-  <meta property="og:description" content="Fair mieten statt warten: Minibagger, Ketten- & Mobilbagger für Aachen, Heinsberg, Düren. Persönlich, schnell, zuverlässig." />
+  <meta property="og:description" content="Minibagger, Ketten- und Mobilbagger mieten – regional, fair und persönlich. Jetzt unverbindlich anfragen." />
   <meta property="og:url" content="https://<DEIN-GITHUB-NAME>.github.io/" />
-  <meta property="og:image" content="https://<DEIN-GITHUB-NAME>.github.io/assets/hero.jpg" />
+  <meta property="og:image" content="https://<DEIN-GITHUB-NAME>.github.io/images/Desk.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Preconnects (kleiner Performance-Boost für GitHub Pages/CDN) -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <!-- Optional: Favicon lokal
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  -->
 
-  <!-- Systemschriften: schnell & DSGVO-freundlich. Willst du Google Fonts, ersetze dies. -->
+  <!-- Lade das Hero-Bild lokal vor -->
+  <link rel="preload" href="images/Desk.jpg" as="image" imagesrcset="images/Desk.jpg 1920w" imagesizes="100vw">
+
   <style>
     :root{
       --blue:#264896;
-      --blue-alpha:rgba(38,72,150,.85); /* halbtransparent für den Block */
-      --bg:#0b1020;
+      --blue-alpha:rgba(38,72,150,.85); /* nur der Textblock ist transparent */
       --text:#0f1220;
       --muted:#5a5f71;
       --white:#fff;
@@ -39,10 +42,14 @@
       color:var(--text);
       line-height:1.5;
       background:#fff;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
     a{color:var(--blue);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
     /* HERO */
     .hero{
       position:relative;
@@ -50,43 +57,49 @@
       display:flex;
       align-items:center;
       overflow:hidden;
-      background:#000;
+      background:#000; /* Fallback BG */
       color:#fff;
     }
     .hero::before{
       content:"";
       position:absolute;inset:0;
-      background-image:url('/sites/default/files/Desk.jpg'); /* oder /assets/hero.jpg in deinem Repo */
+      background-image:url('images/Desk.jpg'); /* lokales Hero-Bild */
       background-size:cover;background-position:center;
       transform:scale(1.02);
       transition:transform 6s ease;
       z-index:1;
     }
-    .hero:hover::before{transform:scale(1.07)}
-    .hero .overlay{
-      position:absolute;inset:0;z-index:2;
-      /* KEIN globales Verdunkeln – Bild bleibt klar */
-      background:transparent;
-    }
+    .hero:hover::before{transform:scale(1.06)}
     .hero .content{
-      position:relative;z-index:3;
-      margin:40px; /* Abstand von links/oben/unten konsistent */
-      max-width:760px;
-      background:var(--blue-alpha); /* nur der Block ist halbtransparent */
+      position:relative;z-index:2;
+      margin:40px;              /* 40 px Abstand links/oben/unten/rechts */
+      max-width:760px;          /* anpassbar (710px, 760px, ...) */
+      background:var(--blue-alpha); /* halbtransparenter Block */
       border-radius:var(--radius);
       box-shadow:0 12px 28px rgba(0,0,0,.28);
       padding:44px 40px;
+      text-align:left;
     }
-    .eyebrow{letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.9;margin:0 0 8px}
+    .eyebrow{
+      letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+      opacity:.95;margin:0 0 8px;color:#fff;
+      font-size:.875rem;
+    }
     .hero h1{
       margin:0 0 18px;
       font-weight:900;
       line-height:1.1;
-      font-size:clamp(38px,6vw,64px);
+      font-size:clamp(38px,6vw,64px); /* groß, zoom-/mobil-freundlich */
       color:#fff;
     }
-    .usp{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:12px 28px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    .usp li{position:relative;padding-left:28px;font-weight:700;color:#fff;font-size:clamp(18px,2.2vw,22px)}
+    .usp{
+      list-style:none;margin:0 0 22px;padding:0;
+      display:grid;gap:12px 28px;grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    .usp li{
+      position:relative;padding-left:28px;font-weight:700;color:#fff;
+      font-size:clamp(18px,2.2vw,22px);
+    }
     .usp li::before{content:"✓";position:absolute;left:0;top:0;font-weight:900}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px}
     .btn{
@@ -99,7 +112,8 @@
 
     /* Sektionen */
     section{padding:56px 0}
-    .lead{font-size:1.125rem;color:#2a2f43;max-width:900px}
+    h2{font-size:clamp(26px,3.2vw,36px);margin:0 0 14px}
+    .lead{font-size:1.1rem;color:#2a2f43;max-width:900px;margin:0}
     .grid-3{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
     .card{border:1px solid #e6e8ef;border-radius:16px;padding:22px 20px;background:#fff}
     .card h3{margin:0 0 8px;font-size:1.125rem}
@@ -107,6 +121,11 @@
     .checklist{list-style:none;margin:12px 0 0;padding:0}
     .checklist li{padding-left:22px;position:relative;margin:8px 0}
     .checklist li::before{content:"✓";position:absolute;left:0;top:0;font-weight:900;color:var(--blue)}
+
+    /* FAQ */
+    .faq details{border:1px solid #e6e8ef;border-radius:12px;padding:14px 16px;margin:12px 0;background:#fff}
+    .faq summary{cursor:pointer;font-weight:700}
+    .faq p{margin:10px 0 0;color:#3b4157}
 
     /* Footer */
     footer{padding:32px 0;border-top:1px solid #eceff5;background:#fafbff}
@@ -123,23 +142,21 @@
     }
   </style>
 
-  <!-- JSON-LD: LocalBusiness + Service + FAQ + Breadcrumb -->
+  <!-- JSON-LD: minimal & sicher (ohne externe Requests, alles lokal) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"LocalBusiness",
+    "@type":"WebSite",
+    "name":"Bagger mieten in Aachen, Heinsberg & Düren | Uwe Müller GmbH",
+    "url":"https://<DEIN-GITHUB-NAME>.github.io/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
     "name":"Uwe Müller GmbH",
     "url":"https://www.baumaschinen-mueller.de/",
-    "image":"https://<DEIN-GITHUB-NAME>.github.io/assets/hero.jpg",
-    "telephone":"+49-2403-997312",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Dürener Straße 589a",
-      "addressLocality":"Eschweiler",
-      "postalCode":"52249",
-      "addressCountry":"DE"
-    },
-    "areaServed":[{"@type":"City","name":"Aachen"},{"@type":"City","name":"Heinsberg"},{"@type":"City","name":"Düren"}],
     "sameAs":["https://www.baumaschinen-mueller.de/"]
   }
   </script>
@@ -150,7 +167,7 @@
     "serviceType":"Bagger mieten",
     "provider":{"@type":"Organization","name":"Uwe Müller GmbH","url":"https://www.baumaschinen-mueller.de/"},
     "areaServed":["Aachen","Heinsberg","Düren"],
-    "description":"Vermietung von Minibaggern, Ketten- und Mobilbaggern inklusive persönlicher Beratung und schneller Verfügbarkeit im Raum Aachen, Heinsberg und Düren."
+    "description":"Vermietung von Minibaggern, Ketten- und Mobilbaggern mit persönlicher Beratung im Raum Aachen, Heinsberg und Düren."
   }
   </script>
   <script type="application/ld+json">
@@ -158,11 +175,9 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"Welche Baggergrößen kann ich mieten?","acceptedAnswer":{"@type":"Answer","text":"Je nach Einsatz stehen Minibagger für enge Baustellen sowie leistungsstarke Ketten- und Mobilbagger bereit. Nennen Sie uns Einsatzzweck, Platzverhältnisse und gewünschte Tiefe – wir empfehlen die passende Klasse."}},
-      {"@type":"Question","name":"Liefert ihr nach Aachen, Heinsberg und Düren?","acceptedAnswer":{"@type":"Answer","text":"Ja. Auf Wunsch liefern wir die Maschine zur Baustelle im gesamten Großraum Aachen, Heinsberg und Düren und holen sie nach Abschluss wieder ab."}},
-      {"@type":"Question","name":"Was benötige ich für die Anmietung?","acceptedAnswer":{"@type":"Answer","text":"In der Regel reichen Kontaktdaten, Mietzeitraum und eine Rechnungadresse. Bei gewerblichen Kunden ggf. Firmenangaben. Wir informieren Sie transparent bei der Anfrage."}},
-      {"@type":"Question","name":"Gibt es Anbauteile wie Löffel oder Hydraulikhammer?","acceptedAnswer":{"@type":"Answer","text":"Ja, für viele Einsätze sind passende Anbauwerkzeuge verfügbar. Teilen Sie uns Ihren Bedarf mit, damit wir die Maschine entsprechend ausstatten können."}},
-      {"@type":"Question","name":"Wie erhalte ich ein faires Angebot?","acceptedAnswer":{"@type":"Answer","text":"Rufen Sie uns an oder nutzen Sie das Anfrageformular auf der Hauptseite. Sie erhalten zeitnah ein transparentes, individuelles Angebot ohne versteckte Kosten."}}
+      {"@type":"Question","name":"Welche Baggergrößen kann ich mieten?","acceptedAnswer":{"@type":"Answer","text":"Je nach Einsatz stehen Minibagger sowie leistungsstarke Ketten- und Mobilbagger bereit. Nennen Sie Einsatzzweck, Platzverhältnisse und Tiefe – wir empfehlen die passende Klasse."}},
+      {"@type":"Question","name":"Liefert ihr in die Region Aachen, Heinsberg und Düren?","acceptedAnswer":{"@type":"Answer","text":"Ja, auf Wunsch liefern wir zur Baustelle im gesamten Großraum Aachen, Heinsberg und Düren und holen nach Abschluss wieder ab."}},
+      {"@type":"Question","name":"Welche Anbauteile sind verfügbar?","acceptedAnswer":{"@type":"Answer","text":"Häufig genutzte Anbauwerkzeuge sind z. B. Tieflöffel, Grabenräumlöffel und (modellabhängig) Hydraulikhammer. Fragen Sie Ihren Bedarf an – wir prüfen die Verfügbarkeit."}}
     ]
   }
   </script>
@@ -181,7 +196,6 @@
 
   <!-- HERO -->
   <header class="hero" id="top">
-    <div class="overlay" aria-hidden="true"></div>
     <div class="content" role="banner">
       <p class="eyebrow">Bagger mieten in Aachen · Heinsberg · Düren</p>
       <h1>Bagger Mieten in Aachen, Heinsberg, Düren und Umgebung</h1>
@@ -194,7 +208,6 @@
       <div class="cta-row">
         <a class="btn" href="https://www.baumaschinen-mueller.de/kontakt" target="_blank" rel="noopener">Jetzt unverbindlich anfragen</a>
         <a class="btn btn-outline" href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener" aria-label="Zur Hauptseite von Uwe Müller GmbH">Zur Hauptseite</a>
-        <a class="btn btn-outline" href="tel:+492403997312" aria-label="Uwe Müller telefonisch anrufen">Anrufen: 02403&nbsp;997312</a>
       </div>
     </div>
   </header>
@@ -203,13 +216,10 @@
   <section>
     <div class="container">
       <p class="lead">
-        Wenn es auf der Baustelle vorangehen soll, brauchen Sie eine Maschine,
-        die passt – in Größe, Leistung und Budget. Als regionaler Partner für
-        <strong>Baggermiete in Aachen, Heinsberg und Düren</strong> beraten wir
-        persönlich und liefern zuverlässig. Von kompakten <em>Minibaggern</em>
-        bis zu kräftigen <em>Ketten- und Mobilbaggern</em>: Mit fairen Angeboten,
-        kurzen Wegen und einem geerdeten Familienservice kommen Projekte schneller
-        ins Rollen.
+        Projekte im Tief- und Gartenbau brauchen die passende Maschine – in Größe, Leistung und Budget.
+        Als regionaler Partner für <strong>Baggermiete in Aachen, Heinsberg und Düren</strong> beraten wir persönlich
+        und liefern zuverlässig. Von kompakten <em>Minibaggern</em> bis zu kräftigen <em>Ketten- und Mobilbaggern</em>:
+        Mit fairen Angeboten, kurzen Wegen und echter Handschlag-Mentalität startet Ihr Vorhaben schneller.
       </p>
     </div>
   </section>
@@ -225,14 +235,14 @@
           <ul class="checklist">
             <li>Schlanke Transportbreite</li>
             <li>Schonend auf empfindlichen Flächen</li>
-            <li>Optional: Tieflöffel, Grabenräumlöffel</li>
+            <li>Optionale Löffel &amp; Räumlöffel</li>
           </ul>
         </article>
         <article class="card">
           <h3>Kettenbagger für standfeste Leistung</h3>
           <p>Wenn Kraft, Standfestigkeit und Reichweite zählen. Für Baugruben, Erdbewegung und anspruchsvolle Einsätze – konstant stark auf weichem Untergrund.</p>
           <ul class="checklist">
-            <li>Hohe Grab- & Reißkräfte</li>
+            <li>Hohe Grab- &amp; Reißkräfte</li>
             <li>Gute Traktion auf losem Boden</li>
             <li>Breites Anbau-Spektrum</li>
           </ul>
@@ -241,7 +251,7 @@
           <h3>Mobilbagger für maximale Flexibilität</h3>
           <p>Schnell von A nach B, stark auf der Baustelle: Mobilbagger verbinden Beweglichkeit mit Leistung – ideal für Tiefbau im urbanen Raum.</p>
           <ul class="checklist">
-            <li>Mobil ohne Transport</li>
+            <li>Flexibel ohne Tieflader</li>
             <li>Effizient auf mehreren Baustellen</li>
             <li>Wirtschaftlich im Tagesgeschäft</li>
           </ul>
@@ -256,28 +266,46 @@
       <h2>So einfach mieten Sie Ihren Bagger</h2>
       <ol class="checklist" style="counter-reset:step">
         <li><strong>Bedarf klären:</strong> Einsatz, Platz, Tiefe, Zeitraum.</li>
-        <li><strong>Beratung & Angebot:</strong> Transparent, fair, zügig.</li>
-        <li><strong>Lieferung & Einweisung:</strong> Wunschtermin, sichere Übergabe.</li>
+        <li><strong>Beratung &amp; Angebot:</strong> Transparent, fair, zügig.</li>
+        <li><strong>Lieferung &amp; Einweisung:</strong> Wunschtermin, sichere Übergabe.</li>
         <li><strong>Rückgabe:</strong> Nach Einsatz holen wir die Maschine wieder ab.</li>
       </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>Häufige Fragen zur Baggermiete</h2>
+
+      <details>
+        <summary>Welche Baggergrößen kann ich mieten?</summary>
+        <p>Je nach Einsatz stehen Minibagger sowie leistungsstarke Ketten- und Mobilbagger bereit. Nennen Sie uns Einsatzzweck, Platzverhältnisse und Tiefe – wir empfehlen die passende Klasse.</p>
+      </details>
+
+      <details>
+        <summary>Liefern Sie in die Region Aachen, Heinsberg und Düren?</summary>
+        <p>Ja. Auf Wunsch liefern wir zur Baustelle im gesamten Großraum Aachen, Heinsberg und Düren und holen die Maschine nach Abschluss wieder ab.</p>
+      </details>
+
+      <details>
+        <summary>Gibt es Anbauteile wie Löffel oder Hydraulikhammer?</summary>
+        <p>Für viele Einsätze sind passende Anbauwerkzeuge verfügbar. Teilen Sie uns Ihren Bedarf mit, damit wir die Maschine passend ausstatten können.</p>
+      </details>
     </div>
   </section>
 
   <!-- CTA -->
   <section id="kontakt">
     <div class="container">
-      <h2>Jetzt Bagger mieten – regional & zuverlässig</h2>
+      <h2>Jetzt Bagger mieten – regional &amp; zuverlässig</h2>
       <p class="lead">
-        Sie haben ein Projekt in <strong>Aachen</strong>, <strong>Heinsberg</strong> oder <strong>Düren</strong>?
+        Projekt in <strong>Aachen</strong>, <strong>Heinsberg</strong> oder <strong>Düren</strong>?
         Wir beraten persönlich und erstellen ein faires Angebot.
       </p>
-      <p class="lead">
-        <a href="https://www.baumaschinen-mueller.de/kontakt" target="_blank" rel="noopener">Kontaktformular auf der Hauptseite</a> ·
-        Telefon: <a href="tel:+492403997312">02403&nbsp;997312</a> ·
-        Adresse: Dürener Straße 589a, 52249 Eschweiler. 
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener">Zur Hauptseite</a>
+      <div class="cta-row" style="margin-top:14px">
+        <a class="btn" href="https://www.baumaschinen-mueller.de/kontakt" target="_blank" rel="noopener">Zum Kontaktformular</a>
+        <a class="btn btn-outline" href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener">Zur Hauptseite</a>
         <a class="btn btn-outline" href="#top">Nach oben</a>
       </div>
     </div>
@@ -286,8 +314,8 @@
   <footer>
     <div class="container">
       <p class="muted">
-        © <span id="y"></span> Uwe Müller GmbH · Satellitenseite für „Bagger mieten Aachen, Heinsberg & Düren“
-        · <a href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener">baumaschinen-mueller.de</a>
+        © <span id="y"></span> Uwe Müller GmbH · Satellitenseite „Bagger mieten Aachen, Heinsberg &amp; Düren“ ·
+        <a href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener">baumaschinen-mueller.de</a>
       </p>
     </div>
   </footer>
