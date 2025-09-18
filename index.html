@@ -53,7 +53,8 @@
     /* HERO */
     .hero{
       position:relative;
-      min-height:100svh;
+      min-height:100vh;   /* Fallback */
+      min-height:100svh;  /* stabiler auf Mobile */
       display:flex;
       align-items:center;
       overflow:hidden;
@@ -102,14 +103,17 @@
     }
     .usp li::before{content:"✓";position:absolute;left:0;top:0;font-weight:900}
     .cta-row{display:flex;flex-wrap:wrap;gap:12px}
-    .btn{
-      display:inline-block;border-radius:10px;padding:12px 22px;font-weight:800;border:2px solid #fff;
-      color:var(--blue);background:#fff;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;text-decoration:none
-    }
 
+    .btn{
+      display:inline-block;border-radius:10px;padding:12px 22px;font-weight:800;
+      border:2px solid #fff; color:var(--blue); background:#fff;
+      transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;text-decoration:none
+    }
     .btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.24)}
-    .btn-outline{background:transparent;color:var(--blue,#2563eb);border:1px solid var(--blue,#2563eb)}
-    .btn-outline:hover{background:var(--blue,#2563eb);color:#fff}
+
+    /* (vorher war hier eine blaue Outline-Variante – die machte blau auf blau) */
+    .btn-outline{background:transparent;color:#fff;border:2px solid #fff}
+    .btn-outline:hover{background:#fff;color:var(--blue);border-color:#fff}
 
     /* Sektionen */
     section{padding:56px 0}
@@ -143,6 +147,13 @@
     }
     @media (max-width:640px){
       .grid-3{grid-template-columns:1fr}
+    }
+
+    /* === Hero-Button-Fokus sichtbar (A11y) === */
+    .hero .btn:focus-visible,
+    .hero .btn-outline:focus-visible{
+      outline:2px solid #fff;
+      outline-offset:2px;
     }
   </style>
 
@@ -211,7 +222,7 @@
       </ul>
       <div class="cta-row">
         <a class="btn" href="https://www.baumaschinen-mueller.de/vermietung-von-baumaschinen" target="_blank" rel="noopener">Jetzt unverbindlich anfragen</a>
-        <a class="btn um-btn--outline" href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener" aria-label="Zur Hauptseite von Uwe Müller GmbH">Zur Hauptseite</a>
+        <a class="btn btn-outline" href="https://www.baumaschinen-mueller.de/" target="_blank" rel="noopener" aria-label="Zur Hauptseite von Uwe Müller GmbH">Zur Hauptseite</a>
       </div>
     </div>
   </header>
@@ -335,3 +346,4 @@
   </script>
 </body>
 </html>
+
